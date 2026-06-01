@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ──────────────────── Usuários ────────────────────
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+// ────────────────── Vantagens ──────────────────
+
+model Advantage {
+  id String @id
+
+  nome String
+
+  tipos Json
+  custo Json
+  nivel Json
+  descricao Json
+  formula Json
+
+  requisitos Json
+  bloqueios Json
+  modificadores Json
+  efeitos Json
+
+  // Índice para acelerar buscas e filtros por nome
+  @@index([nome])
+}
+
+// ──────────────── Desvantagens ────────────────
+
+model Disadvantage {
+  id String @id
+
+  nome String
+
+  tipos Json
+  custo Json
+  nivel Json
+  descricao Json
+  formula Json
+
+  requisitos Json
+  bloqueios Json
+  modificadores Json
+  efeitos Json
+
+  // Índice para acelerar buscas e filtros por nome
+  @@index([nome])
+}
