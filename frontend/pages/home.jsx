@@ -11,7 +11,6 @@ import LoginModal from "../components/modals/loginModal";
 export default function Home({ handleLogout }) {
   const navigate = useNavigate();
   //Nome usuário
-  const username = localStorage.getItem("username") || "Aventureiro(a)"; // se não tiver login vem como Aventureiro(a)
 
   /*
   ──────────────────────────────
@@ -28,6 +27,11 @@ export default function Home({ handleLogout }) {
   const closeLoginModal = () => {
     setShowLoginModal(false);
   };
+
+  useEffect(() => {
+      const username = localStorage.getItem("username") || "Aventureiro(a)"; // se não tiver login vem como Aventureiro(a)
+      setUsername(username);
+  }, []);
 
   return (
     <>
