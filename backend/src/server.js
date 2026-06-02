@@ -8,14 +8,14 @@ const app = express()
 const PORT = process.env.PORT || 3333
 
 // porta padrão do Vite
-app.use(cors({
-  origin: "https://theoros-base.vercel.app",
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
-}));
+// app.use(cors({
+//   origin: "https://theoros-base.vercel.app",
+//   credentials: true,
+//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   allowedHeaders: ["Content-Type", "Authorization"]
+// }));
 
-app.options("*", cors());
+app.use(cors());
 
 // permite que o Express entenda requisições com corpo em JSON
 app.use(express.json())
