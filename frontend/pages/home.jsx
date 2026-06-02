@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +10,7 @@ import LoginModal from "../components/modals/loginModal";
 
 export default function Home({ handleLogout }) {
   const navigate = useNavigate();
-  //Nome usuário
+  const [username, setUsername] = useState("");
 
   /*
   ──────────────────────────────
