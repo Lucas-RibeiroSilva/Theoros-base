@@ -12,11 +12,14 @@ import DoorBackOutlinedIcon from "@mui/icons-material/DoorBackOutlined";
 import MeetingRoomOutlinedIcon from "@mui/icons-material/MeetingRoomOutlined";
 
 export default function Header({ handleLogout }) {
-  const [menuOpen, setMenuOpen] = useState(false);
+  // Estados para controle de UI
+  const [menuOpen, setMenuOpen] = useState(false); // Controla abertura do menu lateral
+  const [doorHover, setDoorHover] = useState(false); // Controla hover do ícone de logout
+  const [showLoginModal, setShowLoginModal] = useState(false); // Controla exibição do modal de login
 
-  const [doorHover, setDoorHover] = useState(false);
-
-  const [showLoginModal, setShowLoginModal] = useState(false);
+  // Tokens e status de autenticação
+  const token = localStorage.getItem("token");
+  const isLogged = token ? true : false;
 
   const openLoginModal = () => {
     setShowLoginModal(true);
@@ -29,19 +32,18 @@ export default function Header({ handleLogout }) {
   const navigate = useNavigate();
 
   // Verifica se é visitante
-  const isGuest =
-    !localStorage.getItem("token") && localStorage.getItem("guest_token");
-
-  // Clique no perfil
   function handleProfileClick() {
-    // Visitante → abre modal login
-    if (isGuest) {
-      openLoginModal()
+    console.log("token:", localStorage.getItem("token"));
+    console.log("guest:", localStorage.getItem("guest_token"));
 
+    if (isLogged) {
+      console.log("indo para profile");
+      navigate("/profile");
       return;
     }
-    // Usuário logado
-    navigate("/profile");
+
+    console.log("abrindo login");
+    openLoginModal();
   }
 
   return (
