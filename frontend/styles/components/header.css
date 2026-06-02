@@ -1,0 +1,267 @@
+/* ===== RESET GLOBAL ===== */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+
+  font-family: "Georgia", "Times New Roman", serif;
+
+  background-color: #0b0f14;
+  color: #e6d8b5;
+}
+
+/* ===== HEADER (MEDIEVAL / RPG) ===== */
+header {
+  width: 100%;
+  height: 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 2rem;
+  box-sizing: border-box;
+
+  background: linear-gradient(90deg, #1a120b, #2b1b0f, #1a120b);
+
+  color: #f5e6c8;
+
+  border-bottom: 2px solid #b08a3c;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.8);
+}
+
+/* ===== TITULO ===== */
+header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+
+  margin: 0;
+
+  color: #d4af37;
+
+  letter-spacing: 1px;
+
+  text-shadow:
+    0 0 8px rgba(212, 175, 55, 0.3),
+    0 0 15px rgba(0, 0, 0, 0.8);
+}
+
+/* ===== HEADER RIGHT ===== */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-right span {
+  font-size: 1rem;
+  font-weight: 500;
+
+  color: #e6d8b5;
+}
+
+/* ===== BOTÕES ===== */
+.btn-logout,
+.btn-menu {
+  padding: 0.6rem 1.2rem;
+
+  border: 2px solid #d4af37;
+  border-radius: 8px;
+
+  background: linear-gradient(135deg, #5a1a1a, #8b2f2f);
+
+  color: #f5e6c8;
+
+  font-size: 0.95rem;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.btn-logout:hover,
+.btn-menu:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.7),
+    0 0 12px rgba(212, 175, 55, 0.25);
+}
+
+.btn-logout:active,
+.btn-menu:active {
+  transform: scale(0.97);
+}
+
+/* ===== PROFILE ICON ===== */
+.profile-icon {
+  width: 52px;
+  height: 52px;
+
+  padding: 0;
+
+  border: 2px solid #d4af37;
+  border-radius: 50%;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  background:
+    radial-gradient(circle at top, #4a3217, #24150c);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.25s ease;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.7),
+    inset 0 0 10px rgba(212, 175, 55, 0.15);
+}
+
+.profile-icon:hover {
+  transform: translateY(-2px) scale(1.05);
+
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.7),
+    0 0 12px rgba(212, 175, 55, 0.25);
+}
+
+/* ===== FOTO PERFIL ===== */
+.profile-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+/* ===== ICONE PADRÃO ===== */
+.default-profile-icon {
+  font-size: 40px !important;
+
+  color: #d4b653;
+
+  filter:
+    drop-shadow(0 0 4px rgba(212, 175, 55, 0.3));
+}
+
+/* ===== HOME HEADER ===== */
+.home-header {
+  width: 100%;
+
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+
+  background-color: #1a120b;
+
+  border-bottom: 1px solid #3a2a1a;
+}
+
+/* ===== BOTÃO PRINCIPAL ===== */
+.btn-primary {
+  padding: 0.9rem 1.8rem;
+
+  border: 2px solid #d4af37;
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, #6b4f1d, #b08a3c);
+
+  color: #1a120b;
+
+  font-size: 1rem;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.7),
+    0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+/* ===== BOTÃO LOGOUT ICON ===== */
+.btn-logout-icon {
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-logout-icon:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* ===== ICONE PORTA ===== */
+.logout-door-icon {
+  font-size: 40px !important;
+
+  color: #d4b653;
+
+  transition: all 0.2s ease;
+
+  filter:
+    drop-shadow(0 0 4px rgba(212, 175, 55, 0.3));
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+  header {
+    padding: 0 1rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .header-right {
+    gap: 0.5rem;
+  }
+
+  .btn-menu,
+  .btn-logout {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .profile-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .home-main h2 {
+    font-size: 2rem;
+  }
+
+  .home-main p {
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+    max-width: 300px;
+  }
+}

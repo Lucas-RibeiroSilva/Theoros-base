@@ -1,0 +1,276 @@
+[
+  {
+    "id": "surdo",
+    "nome": "Surdo",
+
+    "tipos": {
+      "mental": false,
+      "sobrenatural": false,
+      "fisica": true,
+      "social": false,
+      "exotica": false
+    },
+
+    "custo": {
+      "base": -20,
+      "variavel": false,
+      "valorVariavel": 0,
+      "display": "-20 pontos"
+    },
+
+    "nivel": {
+      "permite": false,
+      "atual": 0,
+      "maximo": 0
+    },
+
+    "descricao": {
+      "breve": "O personagem não possui audição.",
+      "completa": "O personagem é completamente incapaz de ouvir."
+    },
+
+    "formula": {
+      "valor": "",
+      "descricao": ""
+    },
+
+    "requisitos": [],
+
+    "bloqueios": [
+      {
+        "tipo": "vantagem",
+        "id": "boa_audicao"
+      }
+    ],
+
+    "modificadores": [],
+
+    "efeitos": [
+      {
+        "tipo": "penalidade",
+        "alvo": "audicao",
+        "valor": -999
+      }
+    ]
+  },
+
+  {
+    "id": "cego",
+    "nome": "Cego",
+
+    "tipos": {
+      "mental": false,
+      "sobrenatural": false,
+      "fisica": true,
+      "social": false,
+      "exotica": false
+    },
+
+    "custo": {
+      "base": -50,
+      "variavel": false,
+      "valorVariavel": 0,
+      "display": "-50 pontos"
+    },
+
+    "nivel": {
+      "permite": false,
+      "atual": 0,
+      "maximo": 0
+    },
+
+    "descricao": {
+      "breve": "O personagem não consegue enxergar.",
+      "completa": "O personagem é completamente incapaz de utilizar a visão."
+    },
+
+    "formula": {
+      "valor": "",
+      "descricao": ""
+    },
+
+    "requisitos": [],
+
+    "bloqueios": [
+      {
+        "tipo": "vantagem",
+        "id": "visao_noturna"
+      }
+    ],
+
+    "modificadores": [],
+
+    "efeitos": [
+      {
+        "tipo": "penalidade",
+        "alvo": "visao",
+        "valor": -999
+      }
+    ]
+  },
+
+  {
+    "id": "covarde",
+    "nome": "Covarde",
+
+    "tipos": {
+      "mental": true,
+      "sobrenatural": false,
+      "fisica": false,
+      "social": false,
+      "exotica": false
+    },
+
+    "custo": {
+      "base": -10,
+      "variavel": false,
+      "valorVariavel": 0,
+      "display": "-10 pontos"
+    },
+
+    "nivel": {
+      "permite": false,
+      "atual": 0,
+      "maximo": 0
+    },
+
+    "descricao": {
+      "breve": "O personagem evita situações perigosas.",
+      "completa": "O personagem possui medo excessivo de combate e situações arriscadas."
+    },
+
+    "formula": {
+      "valor": "",
+      "descricao": ""
+    },
+
+    "requisitos": [],
+
+    "bloqueios": [
+      {
+        "tipo": "vantagem",
+        "id": "reflexos_em_combate"
+      }
+    ],
+
+    "modificadores": [],
+
+    "efeitos": [
+      {
+        "tipo": "penalidade",
+        "alvo": "coragem",
+        "valor": -2
+      }
+    ]
+  },
+
+  {
+    "id": "feiura",
+    "nome": "Feiura",
+
+    "tipos": {
+      "mental": false,
+      "sobrenatural": false,
+      "fisica": false,
+      "social": true,
+      "exotica": false
+    },
+
+    "custo": {
+      "base": -8,
+      "variavel": false,
+      "valorVariavel": 0,
+      "display": "-8 pontos"
+    },
+
+    "nivel": {
+      "permite": false,
+      "atual": 0,
+      "maximo": 0
+    },
+
+    "descricao": {
+      "breve": "A aparência do personagem causa desconforto.",
+      "completa": "O personagem possui aparência desagradável, sofrendo penalidades sociais."
+    },
+
+    "formula": {
+      "valor": "",
+      "descricao": ""
+    },
+
+    "requisitos": [],
+
+    "bloqueios": [
+      {
+        "tipo": "vantagem",
+        "id": "carisma"
+      }
+    ],
+
+    "modificadores": [],
+
+    "efeitos": [
+      {
+        "tipo": "penalidade",
+        "alvo": "reacoes_sociais",
+        "valor": -2
+      }
+    ]
+  },
+
+  {
+    "id": "amaldicoado",
+    "nome": "Amaldiçoado",
+
+    "tipos": {
+      "mental": false,
+      "sobrenatural": true,
+      "fisica": false,
+      "social": false,
+      "exotica": true
+    },
+
+    "custo": {
+      "base": -15,
+      "variavel": false,
+      "valorVariavel": 0,
+      "display": "-15 pontos"
+    },
+
+    "nivel": {
+      "permite": false,
+      "atual": 0,
+      "maximo": 0
+    },
+
+    "descricao": {
+      "breve": "Má sorte sobrenatural acompanha o personagem.",
+      "completa": "Eventos estranhos e negativos acontecem frequentemente ao redor do personagem."
+    },
+
+    "formula": {
+      "valor": "",
+      "descricao": ""
+    },
+
+    "requisitos": [],
+
+    "bloqueios": [
+      {
+        "tipo": "vantagem",
+        "id": "magia_inata"
+      }
+    ],
+
+    "modificadores": [],
+
+    "efeitos": [
+      {
+        "tipo": "penalidade",
+        "alvo": "eventos_aleatorios",
+        "valor": -3
+      }
+    ]
+  }
+]
