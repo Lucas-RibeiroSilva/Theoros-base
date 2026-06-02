@@ -10,8 +10,12 @@ const PORT = process.env.PORT || 3333
 // porta padrão do Vite
 app.use(cors({
   origin: "https://theoros-base.vercel.app",
-  credentials: true
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
+app.options("*", cors());
 
 // permite que o Express entenda requisições com corpo em JSON
 app.use(express.json())
@@ -41,7 +45,7 @@ console.log(`
 ║  Os arquivos antigos ecoam pelos corredores.                 ║
 ║  Criaturas e dados agora respondem ao chamado.               ║
 ║                                                              ║
-║  🗄️  Backend Arcano: http://localhost:3333                    ║
+║  🗄️  Backend Arcano: ${PORT}                                 ║
 ║                                                              ║
 ║  ⚔ API: ONLINE                                               ║
 ║  🛡 Banco de dados sincronizado                               ║
