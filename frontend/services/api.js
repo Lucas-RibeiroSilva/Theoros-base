@@ -8,7 +8,7 @@ REGISTRO
 
 export async function registerUser(username, email, password) {
   try {
-    const res = await fetch(`${API_URL}/auth/register`, {
+    const res = await fetch(`${API_URL}/register`, {
       method: "POST",
 
       headers: {
@@ -46,7 +46,7 @@ LOGIN
 
 export async function loginUser(email, password) {
   try {
-    const res = await fetch(`${API_URL}/auth/login`, {
+    const res = await fetch(`${API_URL}/login`, {
       method: "POST",
 
       headers: {
@@ -83,7 +83,7 @@ SESSÃO VISITANTE
 
 export async function createGuestSession() {
   try {
-    const res = await fetch(`${API_URL}/auth/guest-session`, {
+    const res = await fetch(`${API_URL}/guest-session`, {
       method: "POST",
 
       headers: {
@@ -115,7 +115,7 @@ LISTA DE TODAS AS VANTAGENS
 
 export async function searchAdvantages() {
   try {
-    const res = await fetch(`${API_URL}/auth/advantages`, {
+    const res = await fetch(`${API_URL}/advantages`, {
       method: "GET",
     });
 
