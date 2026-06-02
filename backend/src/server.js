@@ -9,9 +9,7 @@ const PORT = process.env.PORT || 3333
 
 // porta padrão do Vite
 app.use(cors({
-  origin: [
-    "https://theoros-base.vercel.app/"
-  ],
+  origin: "https://theoros-base.vercel.app",
   credentials: true
 }));
 
