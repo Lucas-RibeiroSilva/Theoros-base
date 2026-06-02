@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import Home from "./pages/home";
 import Create from "./pages/create";
+import Profile from "./pages/profile";
 
 import SessionManager from "./components/sessionManager";
 
@@ -47,7 +48,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home handleLogout={handleLogout} />} />
         <Route path="/create" element={<Create handleLogout={handleLogout} />} />
-        
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </SessionManager>
   );
