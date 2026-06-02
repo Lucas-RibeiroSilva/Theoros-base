@@ -33,16 +33,10 @@ export default function Header({ handleLogout }) {
 
   // Verifica se é visitante
   function handleProfileClick() {
-    console.log("token:", localStorage.getItem("token"));
-    console.log("guest:", localStorage.getItem("guest_token"));
-
     if (isLogged) {
-      console.log("indo para profile");
       navigate("/profile");
       return;
     }
-
-    console.log("abrindo login");
     openLoginModal();
   }
 
