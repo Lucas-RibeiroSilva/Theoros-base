@@ -20,11 +20,15 @@
 ========================= */
 .modal {
     width: 950px;
+    height: 650px;
+
     max-width: 95vw;
-    max-height: 85vh;
+    max-height: 95vh;
 
     display: flex;
     flex-direction: column;
+
+    overflow: hidden;
 
     padding: 24px;
 
@@ -150,7 +154,9 @@
     flex-direction: column;
     gap: 14px;
 
+    flex: 1;
     overflow-y: auto;
+    min-height: 0;
     padding-right: 6px;
 }
 
@@ -224,11 +230,24 @@
 /* =========================
    TIPO
 ========================= */
+
+.types-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: flex-end;
+    max-width: 260px;
+    margin-top: -15px;
+}
+
 .type-advantagem {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
 
-    padding: 12px 8px;
+    white-space: nowrap;
+
+    padding: 6px 12px;
 
     border-radius: 999px;
 
@@ -242,15 +261,11 @@
 
     color: #f4df9c;
 
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: bold;
-
-    margin-top: -2px;
-    margin-bottom: 0px;
 }
 
 .type-advantagem span {
-    margin-top: -15px;
     font-size: 0.9rem;
 }
 
@@ -366,17 +381,14 @@
    TOPO CARD
 ========================= */
 .advantage-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-
-    gap: 15px;
-
-    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 12px;
 }
 
 .advantage-top h3 {
-    margin: 0 0 8px;
+    margin: 0;
 
     color: #f4df9c;
 

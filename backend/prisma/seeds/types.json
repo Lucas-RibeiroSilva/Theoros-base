@@ -1,0 +1,8 @@
+[
+  { "name": "Physical" },
+  { "name": "Mental" },
+  { "name": "Social" },
+  { "name": "Combat" },
+  { "name": "Exotic" },
+  { "name": "Supernatural" }
+]

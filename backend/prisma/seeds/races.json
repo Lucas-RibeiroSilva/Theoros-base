@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Humano",
+    "description": "A raça mais comum e adaptável. Humanos não possuem modificadores especiais, mas recebem pontos extras de vantagem na criação.",
+    "modifiers": []
+  },
+
+  {
+    "name": "Elfo",
+    "description": "Seres graciosos e longevos com afinidade natural pela magia e pela natureza.",
+    "modifiers": [
+      {
+        "attribute": "DX",
+        "operator": "ADD",
+        "value": 1,
+        "display": "+1 Destreza"
+      },
+      {
+        "attribute": "IQ",
+        "operator": "ADD",
+        "value": 1,
+        "display": "+1 Inteligência"
+      },
+      {
+        "attribute": "ST",
+        "operator": "ADD",
+        "value": -1,
+        "display": "-1 Força"
+      }
+    ]
+  },
+
+  {
+    "name": "Anão",
+    "description": "Robustos e resistentes, os anões são conhecidos por sua força e durabilidade.",
+    "modifiers": [
+      {
+        "attribute": "ST",
+        "operator": "ADD",
+        "value": 1,
+        "display": "+1 Força"
+      },
+      {
+        "attribute": "HT",
+        "operator": "ADD",
+        "value": 1,
+        "display": "+1 Saúde"
+      },
+      {
+        "attribute": "DX",
+        "operator": "ADD",
+        "value": -1,
+        "display": "-1 Destreza"
+      }
+    ]
+  }
+]

@@ -15,11 +15,11 @@ export default function AdvantagensSection() {
   const [showAdvantagensModal, setShowAdvantagensModal] = useState(false);
   // Filtros
   const [filters, setFilters] = useState({
-    fisica: false,
-    mental: false,
-    social: false,
-    sobrenatural: false,
-    exotica: false,
+    Physical: false,
+    Mental: false,
+    Social: false,
+    Supernatural: false,
+    Exotic: false,
   });
 
   // Funções para abrir e fechar o modal de adicionar Vantagens
@@ -78,42 +78,42 @@ export default function AdvantagensSection() {
           />
 
         </div>
-        
+
 
         {/*Botões dos filtros */}
         {mostrarVantagens && (
           <div className="advantage-filters">
             <button
-              className={filters.fisica ? "active" : ""}
-              onClick={() => toggleFilter("fisica")}
+              className={filters.Physical ? "active" : ""}
+              onClick={() => toggleFilter("Physical")}
             >
               Física
             </button>
 
             <button
-              className={filters.mental ? "active" : ""}
-              onClick={() => toggleFilter("mental")}
+              className={filters.Mental ? "active" : ""}
+              onClick={() => toggleFilter("Mental")}
             >
               Mental
             </button>
 
             <button
-              className={filters.social ? "active" : ""}
-              onClick={() => toggleFilter("social")}
+              className={filters.Social ? "active" : ""}
+              onClick={() => toggleFilter("Social")}
             >
               Social
             </button>
 
             <button
-              className={filters.sobrenatural ? "active" : ""}
-              onClick={() => toggleFilter("sobrenatural")}
+              className={filters.Supernatural ? "active" : ""}
+              onClick={() => toggleFilter("Supernatural")}
             >
               Sobrenatural
             </button>
 
             <button
-              className={filters.exotica ? "active" : ""}
-              onClick={() => toggleFilter("exotica")}
+              className={filters.Exotic ? "active" : ""}
+              onClick={() => toggleFilter("Exotic")}
             >
               Exótica
             </button>

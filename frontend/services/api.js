@@ -1,136 +1,299 @@
 const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3333";
 
-/*
-──────────────────────────────
-REGISTRO
-──────────────────────────────
-*/
+// Helper interno — monta os headers com token se existir
+function getHeaders(auth = false) {
+  const headers = { "Content-Type": "application/json" };
 
-export async function registerUser(username, email, password) {
+  if (auth) {
+    const token =
+      localStorage.getItem("token") ?? localStorage.getItem("guest_token");
+
+    if (token) headers["Authorization"] = `Bearer ${token}`;
+  }
+
+  return headers;
+}
+
+// Helper interno — faz o fetch e trata erros de forma padronizada
+async function request(path, options = {}) {
   try {
-    const res = await fetch(`${API_URL}/auth/register`, {
-      method: "POST",
+    const res = await fetch(`${API_URL}${path}`, options);
 
-      headers: {
-        "Content-Type": "application/json",
-      },
+    let data;
 
-      body: JSON.stringify({
-        username,
-        email,
-        password,
-      }),
-    });
-
-    const data = await res.json();
+    try {
+      data = await res.json();
+    } catch {
+      data = null;
+    }
 
     if (!res.ok) {
       return {
-        error: data.message ?? "Erro ao criar conta",
+        error: data?.error ?? `Erro ${res.status}: ${res.statusText}`,
       };
     }
 
     return data;
-  } catch {
+  } catch (error) {
+    console.error(error);
+
     return {
       error: "Erro de conexão com o servidor",
     };
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+
 /*
-──────────────────────────────
-LOGIN
-──────────────────────────────
+══════════════════════════════════════════════════════
+AUTH
+══════════════════════════════════════════════════════
 */
+
+export async function registerUser(username, email, password) {
+  return request("/auth/register", {
+    method: "POST",
+    headers: getHeaders(),
+    body: JSON.stringify({ username, email, password }),
+  });
+}
 
 export async function loginUser(email, password) {
-  try {
-    const res = await fetch(`${API_URL}/auth/login`, {
-      method: "POST",
-
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      return {
-        error: data.message ?? "Erro ao fazer login",
-      };
-    }
-
-    return data;
-  } catch {
-    return {
-      error: "Erro ao conectar com o servidor",
-    };
-  }
+  return request("/auth/login", {
+    method: "POST",
+    headers: getHeaders(),
+    body: JSON.stringify({ email, password }),
+  });
 }
-
-/*
-──────────────────────────────
-SESSÃO VISITANTE
-──────────────────────────────
-*/
 
 export async function createGuestSession() {
-  try {
-    const res = await fetch(`${API_URL}/auth/guest-session`, {
-      method: "POST",
-
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      return {
-        error: data.message ?? "Erro ao criar sessão",
-      };
-    }
-
-    return data;
-  } catch {
-    return {
-      error: "Erro ao conectar com o servidor",
-    };
-  }
+  return request("/auth/guest-session", {
+    method: "POST",
+    headers: getHeaders(),
+  });
 }
 
 /*
-──────────────────────────────
-LISTA DE TODAS AS VANTAGENS
-──────────────────────────────
+══════════════════════════════════════════════════════
+TRAITS — Vantagens e Desvantagens
+══════════════════════════════════════════════════════
 */
 
-export async function searchAdvantages() {
-  try {
-    const res = await fetch(`${API_URL}/auth/advantages`, {
-      method: "GET",
-    });
+export async function getAdvantages() {
+  return request("/traits/advantages", {
+    method: "GET",
+    headers: getHeaders(),
+  });
+}
 
-    const data = await res.json();
+export async function getAdvantageById(id) {
+  return request(`/traits/advantages/${id}`, {
+    method: "GET",
+    headers: getHeaders(),
+  });
+}
 
-    if (!res.ok) {
-      return {
-        error: data.message ?? "Erro ao buscar vantagens",
-      };
-    }
+export async function getDisadvantages() {
+  return request("/traits/disadvantages", {
+    method: "GET",
+    headers: getHeaders(),
+  });
+}
 
-    return data;
-  } catch {
-    return {
-      error: "Erro ao conectar com o servidor",
-    };
-  }
+export async function getDisadvantageById(id) {
+  return request(`/traits/disadvantages/${id}`, {
+    method: "GET",
+    headers: getHeaders(),
+  });
+}
+
+/*
+══════════════════════════════════════════════════════
+LIMITATIONS — Limitações
+══════════════════════════════════════════════════════
+*/
+
+export async function getLimitations() {
+  return request("/limitations", {
+    method: "GET",
+    headers: getHeaders(),
+  });
+}
+
+export async function getLimitationById(id) {
+  return request(`/limitations/${id}`, {
+    method: "GET",
+    headers: getHeaders(),
+  });
+}
+
+/*
+══════════════════════════════════════════════════════
+CARDS — Fichas
+══════════════════════════════════════════════════════
+*/
+
+export async function getCards() {
+  return request("/cards", {
+    method: "GET",
+    headers: getHeaders(),
+  });
+}
+
+export async function getCardById(id) {
+  return request(`/cards/${id}`, {
+    method: "GET",
+    headers: getHeaders(),
+  });
+}
+
+export async function createCard(cardData) {
+  return request("/cards", {
+    method: "POST",
+    headers: getHeaders(true),
+    body: JSON.stringify(cardData),
+  });
+}
+
+export async function updateCard(id, cardData) {
+  return request(`/cards/${id}`, {
+    method: "PUT",
+    headers: getHeaders(true),
+    body: JSON.stringify(cardData),
+  });
+}
+
+export async function deleteCard(id) {
+  return request(`/cards/${id}`, {
+    method: "DELETE",
+    headers: getHeaders(true),
+  });
+}
+
+/*
+══════════════════════════════════════════════════════
+EXPERTISES — Perícias
+══════════════════════════════════════════════════════
+*/
+
+export async function getExpertises() {
+  return request("/expertises", {
+    method: "GET",
+    headers: getHeaders(),
+  });
+}
+
+export async function getExpertiseById(id) {
+  return request(`/expertises/${id}`, {
+    method: "GET",
+    headers: getHeaders(),
+  });
+}
+
+/*
+══════════════════════════════════════════════════════
+EXPANSIONS — Ampliações
+══════════════════════════════════════════════════════
+*/
+
+export async function getExpansions() {
+  return request("/expansions", {
+    method: "GET",
+    headers: getHeaders(),
+  });
+}
+
+export async function getExpansionById(id) {
+  return request(`/expansions/${id}`, {
+    method: "GET",
+    headers: getHeaders(),
+  });
+}
+
+/*
+══════════════════════════════════════════════════════
+TECHNIQUES — Técnicas
+══════════════════════════════════════════════════════
+*/
+
+export async function getTechniques() {
+  return request("/techniques", {
+    method: "GET",
+    headers: getHeaders(),
+  });
+}
+
+export async function getTechniqueById(id) {
+  return request(`/techniques/${id}`, {
+    method: "GET",
+    headers: getHeaders(),
+  });
+}
+
+/*
+══════════════════════════════════════════════════════
+MAGICS — Magias
+══════════════════════════════════════════════════════
+*/
+
+export async function getMagics() {
+  return request("/magics", {
+    method: "GET",
+    headers: getHeaders(),
+  });
+}
+
+export async function getMagicById(id) {
+  return request(`/magics/${id}`, {
+    method: "GET",
+    headers: getHeaders(),
+  });
+}
+
+/*
+══════════════════════════════════════════════════════
+LOOKUP — Classes, Tipos, Dificuldades, Raças
+══════════════════════════════════════════════════════
+*/
+
+export async function getClasses() {
+  return request("/classes", { method: "GET", headers: getHeaders() });
+}
+
+export async function getTypes() {
+  return request("/types", { method: "GET", headers: getHeaders() });
+}
+
+export async function getDifficulties() {
+  return request("/difficulties", { method: "GET", headers: getHeaders() });
+}
+
+export async function getRaces() {
+  return request("/races", { method: "GET", headers: getHeaders() });
+}
+
+export async function getRaceById(id) {
+  return request(`/races/${id}`, { method: "GET", headers: getHeaders() });
+}
+
+/*
+══════════════════════════════════════════════════════
+RATINGS — Avaliações
+══════════════════════════════════════════════════════
+*/
+
+export async function getRatingsByCard(cardId) {
+  return request(`/ratings/${cardId}`, {
+    method: "GET",
+    headers: getHeaders(),
+  });
+}
+
+export async function rateCard(cardId, score) {
+  return request("/ratings", {
+    method: "POST",
+    headers: getHeaders(true),
+    body: JSON.stringify({ cardId, score }),
+  });
 }

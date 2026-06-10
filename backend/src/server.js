@@ -1,13 +1,29 @@
-// Express é o que deixa o servidor rodando e respondendo às requisições
-import express from 'express' 
-// CORS é uma política de segurança que bloqueia requisições de origens diferentes. Usamos para permitir que o frontend (que roda em outra porta) se comunique com o backend.
+// O express é o framework web para Node.js que facilita a criação de servidores e APIs
+import express from 'express'
+// Cors para permitir requisições de diferentes origens (domínios)
 import cors from 'cors'
-import { authRoutes } from './routes/auth.js'
+
+// Importação das rotas organizadas por funcionalidade
+import { authRoutes }       from './routes/auth.js'
+import { traitRoutes }      from './routes/traits.js'
+import { limitationRoutes } from './routes/limitations.js'
+import { cardRoutes }       from './routes/cards.js'
+import { expertiseRoutes }  from './routes/expertises.js'
+import { expansionRoutes }  from './routes/expansions.js'
+import { techniqueRoutes }  from './routes/techniques.js'
+import { magicRoutes }      from './routes/magics.js'
+import { classRoutes }      from './routes/classes.js'
+import { typeRoutes }       from './routes/types.js'
+import { difficultyRoutes } from './routes/difficulties.js'
+import { raceRoutes }       from './routes/races.js'
+import { ratingRoutes }     from './routes/ratings.js'
 
 const app = express()
 const PORT = process.env.PORT || 3333
 
-// porta padrão do Vite
+// ────────────────────────────── MIDDLEWARES ───────────────────────────────────────
+
+// Configuração do CORS para permitir requisições apenas dos domínios autorizados
 app.use(cors({
   origin: [
     "https://theoros.vercel.app",
@@ -15,19 +31,33 @@ app.use(cors({
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
-}));
+}))
 
-// permite que o Express entenda requisições com corpo em JSON
 app.use(express.json())
 
-// Rotas
-app.use('/auth', authRoutes)
+// ────────────────────────────── ROTAS ───────────────────────────────────────────
+
+app.use('/auth',         authRoutes)
+app.use('/traits',       traitRoutes)
+app.use('/limitations',  limitationRoutes)
+app.use('/cards',        cardRoutes)
+app.use('/expertises',   expertiseRoutes)
+app.use('/expansions',   expansionRoutes)
+app.use('/techniques',   techniqueRoutes)
+app.use('/magics',       magicRoutes)
+app.use('/classes',      classRoutes)
+app.use('/types',        typeRoutes)
+app.use('/difficulties', difficultyRoutes)
+app.use('/races',        raceRoutes)
+app.use('/ratings',      ratingRoutes)
+
+// ────────────────────────────────────────────────────────────────────────────────
 
 app.listen(PORT, () => {
-  console.clear() // Limpa o terminal para exibir a mensagem personalizada de forma mais limpa
-  process.stdout.write('\x1Bc'); // Limpa o terminal de forma mais completa
+  console.clear() // Limpa o console para uma apresentação mais limpa e profissional
+  process.stdout.write('\x1Bc') // Limpa o console (funciona em muitos terminais)
 
-console.log(`
+  console.log(`
 ╔══════════════════════════════════════════════════════════════╗
 ║                                                              ║
 ║ ████████╗██╗  ██╗███████╗ ██████╗ ██████╗  ██████╗ ███████╗  ║

@@ -42,31 +42,19 @@ export default function Create({ handleLogout }) {
 
       {/* NAVEGAÇÃO */}
       <div className="section-buttons">
-        <button
-          className={activeSection === "basic" ? "active" : ""}
-          onClick={() => setActiveSection("basic")}
-        >
+        <button className={activeSection === "basic" ? "active" : ""} onClick={() => setActiveSection("basic")}>
           Básico
         </button>
 
-        <button
-          className={activeSection === "characteristics" ? "active" : ""}
-          onClick={() => setActiveSection("characteristics")}
-        >
+        <button className={activeSection === "characteristics" ? "active" : ""} onClick={() => setActiveSection("characteristics")}>
           Características
         </button>
 
-        <button
-          className={activeSection === "modifiers" ? "active" : ""}
-          onClick={() => setActiveSection("modifiers")}
-        >
+        <button className={activeSection === "modifiers" ? "active" : ""} onClick={() => setActiveSection("modifiers")}>
           Modificadores
         </button>
 
-        <button
-          className={activeSection === "specializations" ? "active" : ""}
-          onClick={() => setActiveSection("specializations")}
-        >
+        <button className={activeSection === "specializations" ? "active" : ""} onClick={() => setActiveSection("specializations")}>
           Especializações
         </button>
       </div>
